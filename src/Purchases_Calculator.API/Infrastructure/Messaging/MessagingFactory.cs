@@ -30,5 +30,9 @@ namespace Purchases_Calculator.API.Infrastructure.Messaging
         {
             return await connection.CreateChannelAsync();
         }
+        public async Task DisposeConnectionAsync(IConnection connection)
+        {
+            await connection.DisposeAsync();
+        }
     }
 }
