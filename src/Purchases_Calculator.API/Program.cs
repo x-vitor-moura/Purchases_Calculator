@@ -1,20 +1,32 @@
-var builder = WebApplication.CreateBuilder(args);
+using Purchases_Calculator.API.Infrastructure.Configuration;
+using Serilog;
 
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+Log.Logger = new LoggerConfiguration()
+    .WriteTo.Console()
+    .CreateBootstrapLogger();
 
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+try
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    Log.Information("Starting web application");
+
+    var builder = WebApplication.CreateBuilder(args);
+    
+    builder.AddServices();
+    
+    var app = builder.Build();
+    
+    app.Configure();
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application terminated unexpectedly!");
+}
+finally
+{
+    Log.CloseAndFlush();
 }
 
-app.UseHttpsRedirection();
-
-
-app.Run();
+// Make the implicit Program class public so test projects can access it
+public partial class Program { }

@@ -1,8 +1,10 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Purchases_Calculator.API.Infrastructure.Databases;
 using Purchases_Calculator.API.Infrastructure.Databases.Repositories;
 using Purchases_Calculator.API.Infrastructure.Messaging;
+using RabbitMQ.Client;
 using Serilog;
 using System;
 
@@ -35,7 +37,6 @@ public static class ConfigureServices
         builder.Services.AddSwaggerGen(options =>
         {
             options.CustomSchemaIds(type => type.FullName?.Replace('+', '.'));
-            // options.InferSecuritySchemes();
         });
     }
 
@@ -50,17 +51,13 @@ public static class ConfigureServices
 
     private static void AddMessaging(this WebApplicationBuilder builder)
     {
-        builder.Services.AddSingleton<IRabbitMQConnection>(sp =>
-        {
-            var configuration = builder.Configuration;
-            return new RabbitMQConnection(
-                configuration["RabbitMQ:HostName"],
-                int.Parse(configuration["RabbitMQ:Port"]),
-                configuration["RabbitMQ:UserName"],
-                configuration["RabbitMQ:Password"]);
-        });
+        builder.Services.Configure<RabbitMqSettings>(builder.Configuration.GetSection("RabbitMq"));
+        builder.Services.AddSingleton(sp => sp.GetRequiredService<IOptions<RabbitMqSettings>>().Value);
 
-        builder.Services.AddSingleton<IMessagePublisher, RabbitMQMessagePublisher>();
+        builder.Services.AddSingleton<IMessagingFactory, MessagingFactory>();
+        builder.Services.AddSingleton<IMessagePublisher, MessagePublisher>();
+        builder.Services.AddSingleton<IMessageConsumer, MessageConsumer>();
+        builder.Services.AddHostedService<MessageConsumer>();
 
     }
 

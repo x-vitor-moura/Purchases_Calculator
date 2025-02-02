@@ -22,7 +22,7 @@ public class GetByIdPurchase : IEndpoint
         }
 
         var purchaseDetails = new GetByIdPurchaseDetails(result.Id,
-                                                         result.PurchaseRegistrationDateString,
+                                                         result.PurchaseRegistrationDate.ToString("yyyy-MM-dd HH:mm"),
                                                          result.Net,
                                                          result.Gross,
                                                          result.Vat,
