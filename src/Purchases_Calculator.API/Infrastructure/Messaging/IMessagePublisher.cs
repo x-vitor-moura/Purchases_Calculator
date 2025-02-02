@@ -1,6 +1,8 @@
-﻿namespace Purchases_Calculator.API.Infrastructure.Messaging;
+﻿using Purchases_Calculator.API.Domain;
+
+namespace Purchases_Calculator.API.Infrastructure.Messaging;
 
 public interface IMessagePublisher
 {
-    Task PublishAsync<T>(T message) where T : class;
+    Task PublishMessageAsync(string routingKey, Purchase purchase);
 }

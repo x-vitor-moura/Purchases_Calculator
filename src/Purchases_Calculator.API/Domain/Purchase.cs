@@ -9,7 +9,6 @@ public class Purchase
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int Id { get; set; }
     public DateTime PurchaseRegistrationDate { get; }
-    public string PurchaseRegistrationDateString => PurchaseRegistrationDate.ToString("yyyy-MM-dd HH:mm");
     public Purchase(decimal net, decimal gross, decimal vat, int vatRate)
     {
         Gross = gross;

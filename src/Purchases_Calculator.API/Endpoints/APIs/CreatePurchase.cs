@@ -25,7 +25,7 @@ public class CreatePurchase : IEndpoint
         // Save the purchase and publish a message
         await purchaseRepository.CreateAsync(purchase);
 
-        await messagePublisher.PublishAsync(purchase);
+        await messagePublisher.PublishMessageAsync("purchase",purchase);
 
         return Results.Created<CreatePurchaseDto>($"/gb/purchase/{purchase.Id}", new CreatePurchaseDto(purchase.Id,
                                                 purchase.Net,
