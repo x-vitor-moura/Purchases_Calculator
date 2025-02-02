@@ -54,7 +54,8 @@ Fetches a purchase by its unique ID.
   "net": 100.50,
   "gross": 120.60,
   "vat": 20.10,
-  "vatRate": 20
+  "vatRate": 20,
+  "purchaseRegistrationDate": "2025-02-02 20:52",
 }
 ```
 ___
