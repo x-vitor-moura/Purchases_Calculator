@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purchases_Calculator.API", "Purchases_Calculator.API\Purchases_Calculator.API.csproj", "{8D2C62DF-242A-45E2-BE06-64A7E94273F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purchases_Calculator.UnitTests", "Purchases_Calculator.UnitTests\Purchases_Calculator.UnitTests.csproj", "{EE1712D5-3125-4C1A-B499-473501BE1045}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Purchases_Calculator.IntegrationTests", "Purchases_Calculator.IntegrationTests\Purchases_Calculator.IntegrationTests.csproj", "{EF112A63-04BE-4EA5-9DB5-50116B3A68D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{8D2C62DF-242A-45E2-BE06-64A7E94273F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D2C62DF-242A-45E2-BE06-64A7E94273F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D2C62DF-242A-45E2-BE06-64A7E94273F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1712D5-3125-4C1A-B499-473501BE1045}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1712D5-3125-4C1A-B499-473501BE1045}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE1712D5-3125-4C1A-B499-473501BE1045}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1712D5-3125-4C1A-B499-473501BE1045}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF112A63-04BE-4EA5-9DB5-50116B3A68D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF112A63-04BE-4EA5-9DB5-50116B3A68D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF112A63-04BE-4EA5-9DB5-50116B3A68D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF112A63-04BE-4EA5-9DB5-50116B3A68D6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
